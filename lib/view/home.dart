@@ -16,7 +16,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late Future<CatAlbum> futureCatAlbum;
-  late int id = 1;
   TextStyle titleStyle = GoogleFonts.openSans(
       fontSize: 35, color: Colors.white, fontWeight: FontWeight.w600);
 
@@ -30,19 +29,9 @@ class _HomeState extends State<Home> {
         futureCatAlbum = fetchCatAlbum(http.Client());
       });
 
-  void nextCatAlbum() => setState(() {
-        id++;
-      });
-  void previousCatAlbum() => setState(() {
-        id--;
-        if (id <= 0) {
-          id = 1;
-        }
-      });
   List<Color> background = [
     Color.fromARGB(255, 2, 2, 2),
-    Color.fromARGB(255, 83, 83, 83),
-    Color.fromARGB(255, 236, 236, 236),
+    Color.fromARGB(255, 172, 172, 172),
   ];
 
   @override
@@ -50,6 +39,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: const Text('Fotos Aleatorias de Gatinhos'),
       ),
       body: Container(
@@ -85,8 +75,8 @@ class _HomeState extends State<Home> {
   Widget outputCard(String url) {
 
     return SizedBox(
-      width: 400,
-      height: 400,
+      width: double.infinity,
+      height: 450,
       child: Container(
         padding: const EdgeInsets.all(10),
         child: Image.network(url),
@@ -95,18 +85,16 @@ class _HomeState extends State<Home> {
   }
 
   Widget navigationButtons() {
-    return Padding(
-        padding: const EdgeInsets.all(10),
-        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+    return  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(vertical: 30),
             child: FloatingActionButton(
-              onPressed: () => {nextCatAlbum(), refresh()},
+              onPressed: () => {refresh()},
               backgroundColor: Colors.transparent,
               shape: const CircleBorder(side: BorderSide(color: Colors.white)),
-              child: const Icon(Icons.arrow_right_outlined),
+              child: const Icon(Icons.replay_rounded),
             ),
           ),
-        ]));
+        ]);
   }
 }
