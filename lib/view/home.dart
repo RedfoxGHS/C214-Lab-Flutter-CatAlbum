@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:http/http.dart' as http;
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:google_fonts/google_fonts.dart'; 
 
 class Home extends StatefulWidget {
@@ -51,7 +50,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: const Text('Fetch Data Example'),
+        title: const Text('Fotos Aleatorias de Gatinhos'),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -61,12 +60,6 @@ class _HomeState extends State<Home> {
                 end: Alignment.topLeft)),
         child: Center(
           child: Column(children: [
-            Container(
-                padding: const EdgeInsets.only(top: 150, bottom: 20),
-                child: Text(
-                  'CatAlbum\nSearch',
-                  style: titleStyle,
-                )),
             FutureBuilder<CatAlbum>(
               future: futureCatAlbum,
               builder: (context, snapshot) {
@@ -92,8 +85,8 @@ class _HomeState extends State<Home> {
   Widget outputCard(String url) {
 
     return SizedBox(
-      width: 300,
-      height: 300,
+      width: 400,
+      height: 400,
       child: Container(
         padding: const EdgeInsets.all(10),
         child: Image.network(url),
@@ -105,15 +98,6 @@ class _HomeState extends State<Home> {
     return Padding(
         padding: const EdgeInsets.all(10),
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: FloatingActionButton(
-              onPressed: () => {previousCatAlbum(), refresh()},
-              backgroundColor: Colors.transparent,
-              shape: const CircleBorder(side: BorderSide(color: Colors.white)),
-              child: const Icon(Icons.arrow_left_outlined),
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: FloatingActionButton(
