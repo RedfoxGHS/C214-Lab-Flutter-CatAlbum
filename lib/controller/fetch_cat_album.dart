@@ -1,5 +1,5 @@
 
-import 'package:cat_album_lab_flutter/model/CatAlbum.dart';
+import 'package:cat_album_lab_flutter/model/cat_album.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
