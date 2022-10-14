@@ -1,4 +1,3 @@
-
 import 'package:cat_album_lab_flutter/model/user_data.dart';
 import 'package:flutter_test/flutter_test.dart';
 
